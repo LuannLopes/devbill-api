@@ -1,11 +1,11 @@
-import { StatusCodes } from 'http-status-codes'
+import { StatusCodes } from 'http-status-codes';
 
-export class AppError extends Error {
-  public statusCode: StatusCodes
+export class AppError {
+  public message: string | string[];
+  public statusCode: StatusCodes;
 
-  constructor(message: string, statusCode: StatusCodes) {
-    super(message)
-
-    this.statusCode = statusCode
+  constructor(message: string | string[], statusCode: StatusCodes) {
+    this.message = message;
+    this.statusCode = statusCode;
   }
 }
