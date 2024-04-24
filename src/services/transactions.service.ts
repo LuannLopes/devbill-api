@@ -2,7 +2,10 @@ import { StatusCodes } from 'http-status-codes'
 
 import { CategoriesRepository } from '../database/repositories/categories.repository'
 import { TransactionsRepository } from '../database/repositories/transactions.repository'
-import { CreateTransactionDTO } from '../dtos/transactions.dto'
+import {
+  CreateTransactionDTO,
+  IndexTransactionsDTO,
+} from '../dtos/transactions.dto'
 import { Transaction } from '../entities/transaction.entity'
 import { AppError } from '../errors/app.error'
 
@@ -37,5 +40,11 @@ export class TransactionsService {
       await this.transactionsRepository.create(transaction)
 
     return createdTransaction
+  }
+
+  async index(filters: IndexTransactionsDTO): Promise<Transaction[]> {
+    const transactions = await this.transactionsRepository.index(filters)
+
+    return transactions
   }
 }
