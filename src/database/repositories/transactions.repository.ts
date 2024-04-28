@@ -47,8 +47,6 @@ export class TransactionsRepository {
       }
     }
 
-    console.log(whereParams)
-
     const transactions = await this.model.find(whereParams, undefined, {
       sort: {
         date: -1,
